@@ -19,13 +19,13 @@ from tensorflow.python.ops import variable_scope as vs
 
 from tensorflow.python.ops.math_ops import sigmoid
 from tensorflow.python.ops.math_ops import tanh
-from tensorflow.python.ops.rnn_cell_impl import RNNCell
+from tensorflow.python.ops.rnn_cell_impl import _RNNCell
 
 from tensorflow.python.platform import tf_logging as logging
 from tensorflow.python.util import nest
 
 
-class AttentionGRUCell(RNNCell):
+class AttentionGRUCell(_RNNCell):
     """Gated Recurrent Unit incoporating attention (cf. https://arxiv.org/abs/1603.01417).
        Adapted from https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/rnn/python/ops/core_rnn_cell_impl.py
 

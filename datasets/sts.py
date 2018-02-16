@@ -19,12 +19,12 @@ class STS(object):
                'Test sentence pairs and 59058 validation sentence pairs.'
         self.test_split = 'large'
         self.dataset = subset
-        self.dataset_path = os.path.join(datasets.data_root_directory,
-                                         self.dataset)
-        self.train_path = os.path.join(self.dataset_path, 'train', 'train.txt')
+        #self.dataset_path = os.path.join(datasets.data_root_directory, self.dataset)
+        self.dataset_path = os.path.join('/','home', 'tanvi', 'dataset', 'quora')
+        self.train_path = os.path.join(self.dataset_path, 'train', 'dep_train.txt')
         self.validation_path = os.path.join(self.dataset_path, 'validation',
-                                            'validation.txt')
-        self.test_path = os.path.join(self.dataset_path, 'test', 'test.txt')
+                                            'dep_validation.txt')
+        self.test_path = os.path.join(self.dataset_path, 'test', 'dep_test.txt')
         self.vocab_path = os.path.join(self.dataset_path, 'vocab.txt')
         self.metadata_path = os.path.abspath(os.path.join(self.dataset_path,
                                                'metadata.txt'))
@@ -121,9 +121,9 @@ class DataSet(object):
             s2s = self.remove_entities(s2s)
 
         if not raw:
-            s1s = datasets.seq2id(s1s[:batch_size], self.vocab_w2i, seq_begin,
+            s1s = datasets.dep_seq2id(s1s[:batch_size], self.vocab_w2i, seq_begin,
                                   seq_end)
-            s2s = datasets.seq2id(s2s[:batch_size], self.vocab_w2i, seq_begin,
+            s2s = datasets.dep_seq2id(s2s[:batch_size], self.vocab_w2i, seq_begin,
                                   seq_end)
         else:
             s1s = datasets.append_seq_markers(s1s[:batch_size], seq_begin, seq_end)

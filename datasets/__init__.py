@@ -28,6 +28,7 @@ test_split_small = 0.2
 
 # TODO: This has to be changed if we want to make this project installable
 data_root_directory = os.path.join('/', 'scratch', 'OSA', 'data', 'datasets')
+#data_root_directory = os.path.join('/','home', 'tanvi', 'dataset')
 
 
 spacy_nlp = None
@@ -148,7 +149,7 @@ def seq2id(data, w2i, seq_begin=False, seq_end=False):
      [1, 2,  5, 1, 3],
      [1, 8,  4, 1, 2]]
 
-    For a function that transforms the abovementioned list of IDs back into
+    For a function that transforms the above mentioned list of IDs back into
     words, see `id2seq`.
 
     Keyword arguments:
@@ -166,6 +167,28 @@ def seq2id(data, w2i, seq_begin=False, seq_end=False):
 
         for term in seq:
             id_seq.append(w2i[term] if term in w2i else w2i['UNK'])
+
+        if seq_end:
+            id_seq.append(w2i['SEQ_END'])
+
+        buff.append(id_seq)
+    return buff
+
+
+
+
+def dep_seq2id(data, w2i, seq_begin=False, seq_end=False):
+    buff = []
+
+    for seq in data:
+        seq_tokens = spacy_tokenizer(' '.join(seq))
+        id_seq = []
+
+        if seq_begin:
+            id_seq.append(w2i['SEQ_BEGIN'])
+
+        for term in seq_tokens:
+            id_seq.append(w2i[str(term)] if str(term) in w2i else w2i['UNK'])
 
         if seq_end:
             id_seq.append(w2i['SEQ_END'])

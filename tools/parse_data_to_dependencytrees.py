@@ -1,4 +1,5 @@
 import spacy
+from spacy.tokenizer import Tokenizer
 
 def parse(doc, lemmatize=False):
 	return get_parse_tree(get_document_root(doc), lemmatize)
@@ -27,6 +28,13 @@ def get_document_root(document):
 
 if __name__ == '__main__':
 	nlp = spacy.load('en_core_web_md')
+
 	doc = nlp("red Label is confused with Python and Java")
-	print(parse(doc))
+
+	parsed_doc = parse(doc)
+	print(parsed_doc)
+	tokens = nlp('([nsubjpass compound red ]compound')
+	print (len(tokens))
+
+
 

@@ -66,8 +66,8 @@ tf.flags.DEFINE_boolean("verbose", True, "Log Verbosity Flag")
 tf.flags.DEFINE_float("gpu_fraction", 0.5, "Fraction of GPU to use")
 tf.flags.DEFINE_string("data_dir", "/scratch", "path to the root of the data "
                                            "directory")
-tf.flags.DEFINE_string("experiment_name", "QUORA_CNN_LSTM", "Name of your model")
-tf.flags.DEFINE_string("mode", "train", "'train' or 'test or results'")
+tf.flags.DEFINE_string("experiment_name", "DEP1", "Name of your model")
+tf.flags.DEFINE_string("mode", "test", "'train' or 'test or results'")
 tf.flags.DEFINE_string("dataset", "Quora", "'The Semantic Text Similarity "
                  "dataset that you want to use. Available options "
                    "are STS, STSLarge, PPDB, Quora, Sick, SemEval"
